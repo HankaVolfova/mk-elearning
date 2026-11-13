@@ -706,7 +706,7 @@ html.calm *,html.calm *::before,html.calm *::after{animation:none!important;tran
      Oddělený od vzhledu (CSS výše) i od ovládací logiky (skript níže).
      Další témata se doplní jako nový záznam v CONTENT.pilot podle vzoru „proces“.
      ============================================================ -->
-<script>window.MK_ANALYTICS=false;window.MK_STUDENT=true;</script>
+<script>window.MK_TRACK_URL="https://e-learning-mk-volfova.netlify.app/api/track";window.MK_ANALYTICS=true;window.MK_STUDENT=true;</script>
 <script>
 const CONTENT = {
   course: "Marketingová komunikace",
@@ -5838,7 +5838,7 @@ const ANA = (() => {
   }
   function flush(){
     if(!on || empty()) return;
-    try { navigator.sendBeacon("/api/track", new Blob([JSON.stringify(B)], {type:"application/json"})); } catch(e){}
+    try { navigator.sendBeacon(window.MK_TRACK_URL || "/api/track", new Blob([JSON.stringify(B)], {type:"text/plain"})); } catch(e){}
     reset();
   }
   function route(k){
